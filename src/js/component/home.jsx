@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-
+import React, { useEffect, useState } from "react";
 
 
 const Home = () => {
@@ -8,7 +6,38 @@ const Home = () => {
 	const [inputValue, setInputValue] = useState("");
 	const [todos, setTodos] = useState([]);
 
+	
+	useEffect( () => {
+		fetch('https://playground.4geeks.com/apis/fake/todos/user/AdrianRios25')
 
+    .then(resp => {
+        console.log(resp.ok); // Será true (verdad) si la respuesta es exitosa.
+        console.log(resp.status); // el código de estado = 200 o código = 400 etc.
+        console.log(resp.text()); // Intentará devolver el resultado exacto como cadena (string)
+        return resp.json(); // (regresa una promesa) will try to parse the result as json as return a promise that you can .then for results
+    })
+    .then(data => {
+       {todos.map((item, index) => (
+					<li>
+
+						{item}	<i className="fa-sharp fa-solid fa-trash" style={{ color: '#000000' }} onClick={() => setTodos(
+							todos.filter(
+								(t, currentIndex) => index != currentIndex
+							)
+						)
+						}></i>
+					</li>
+				))}
+        console.log(data); //esto imprimirá en la consola el objeto exacto recibido del servidor
+    })
+    .catch(error => {
+        //manejo de errores
+        console.log(error);
+    });
+	},
+	[]	
+	)
+	
 
 	return (
 		<div className="container">
