@@ -1,7 +1,10 @@
 
 body{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image:url(https://i.pinimg.com/originals/68/34/20/683420098faac1e27a55280c6fead466.jpg) ;
     background-color: black;
-    color:white;
+    color:rgb(56, 55, 55);
     font-weight: bolder;
     font-size: larger;
 }
@@ -10,7 +13,7 @@ ul{
     margin-bottom: 0px;
 }
 li{
-    background-color: grey;
+    background-color: inherit;
 }
 ul li{
     border: 1px solid grey;
